@@ -4,7 +4,7 @@ class User
   
   include BCrypt
 
-  def initialize name, password
+  def initialize name, password, password_confirmation
     @name = name
     @password = Password.create(password, :cost => 1)
   end
