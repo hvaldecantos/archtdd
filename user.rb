@@ -1,7 +1,12 @@
+require 'bcrypt'
+
 class User
+  
+  include BCrypt
+
   def initialize name, password
     @name = name
-    @password = password
+    @password = Password.create(password, :cost => 1)
   end
   def name
     @name
