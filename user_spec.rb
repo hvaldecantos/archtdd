@@ -9,7 +9,11 @@ describe User do
   before do
     @password = "secret"
     @name = "Fred"
-    @user = User.new @name, @password
+    @user = User.new @name, @password, @password
+  end
+  it "should be created with matching passwod confirmation" do
+    a_user = User.new "Brooks", "same", "same"
+    a_user.wont_be_nil 
   end
   it "has a name" do
     @user.name.must_equal @name
