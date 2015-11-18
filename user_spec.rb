@@ -28,7 +28,11 @@ describe User do
   end
   it "can be set a new password" do
     new_password = "new"
-    @user.set_password new_password
+    @user.set_password new_password, new_password
     @user.password.must_equal BCrypt::Engine.hash_secret(new_password, @user.password)
+  end
+  it "should raise an exception when setting a new password with unmatching password confirmation" do
+    err = ->{ @user.set_password("same", "different") }.must_raise PasswordConfirmationException
+    err.message.must_match /Passwords do not match/
   end
 end
