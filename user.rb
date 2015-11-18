@@ -13,7 +13,8 @@ class User
   def name
     @name
   end
-  def set_password password
+  def set_password password, password_confirmation
+    raise PasswordConfirmationException.new("Passwords do not match") if password != password_confirmation
     @password = Password.create(password, :cost => 1)
   end
   def password
