@@ -26,4 +26,9 @@ describe User do
   it "has an encrypted password" do
     @user.password.must_equal BCrypt::Engine.hash_secret(@password, @user.password)
   end
+  it "can be set a new password" do
+    new_password = "new"
+    @user.set_password new_password
+    @user.password.must_equal BCrypt::Engine.hash_secret(new_password, @user.password)
+  end
 end
