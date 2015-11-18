@@ -13,6 +13,9 @@ class User
   def name
     @name
   end
+  def set_password password
+    @password = Password.create(password, :cost => 1)
+  end
   def password
     @password
   end
