@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require './user'
+require './password_confirmation_exception'
 require 'bcrypt'
 
 include BCrypt
@@ -11,9 +12,13 @@ describe User do
     @name = "Fred"
     @user = User.new @name, @password, @password
   end
-  it "should be created with matching passwod confirmation" do
+  it "should be created with matching password confirmation" do
     a_user = User.new "Brooks", "same", "same"
     a_user.wont_be_nil 
+  end
+  it "should raise an exception if created with unmatching password confirmation" do
+    err = ->{ User.new("Brooks", "same", "different") }.must_raise PasswordConfirmationException
+    err.message.must_match /Passwords do not match/
   end
   it "has a name" do
     @user.name.must_equal @name
