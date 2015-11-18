@@ -1,0 +1,2 @@
+class PasswordConfirmationException < RuntimeError
+end
