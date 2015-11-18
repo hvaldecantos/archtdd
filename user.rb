@@ -5,16 +5,16 @@ class User
   
   include BCrypt
 
-  def initialize name, password, password_confirmation
-    set_password password, password_confirmation
-    @name = name
+  def initialize opt = {}
+    set_password opt
+    @name = opt[:name]
   end
   def name
     @name
   end
-  def set_password password, password_confirmation
-    raise PasswordConfirmationException.new("Passwords do not match") if password != password_confirmation
-    @password = Password.create(password, :cost => 1)
+  def set_password opt = {}
+    raise PasswordConfirmationException.new("Passwords do not match") if opt[:password] != opt[:password_confirmation]
+    @password = Password.create opt[:password], :cost => 1
   end
   def password
     @password
