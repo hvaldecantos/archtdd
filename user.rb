@@ -6,9 +6,8 @@ class User
   include BCrypt
 
   def initialize name, password, password_confirmation
-    raise PasswordConfirmationException.new("Passwords do not match") if password != password_confirmation
+    set_password password, password_confirmation
     @name = name
-    @password = Password.create(password, :cost => 1)
   end
   def name
     @name
