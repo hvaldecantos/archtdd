@@ -37,6 +37,11 @@ describe "Session" do
     session = Session.new(user: @user)
     session.token.wont_be_nil
   end
+  it "should have a token with size 40" do
+    session = Session.new(user: @user)
+    session.save
+    session.token.size.must_equal 40
+  end
   describe "is_expired" do
     it "should return false if session has not expired" do
       session = Session.new(user: @user)
