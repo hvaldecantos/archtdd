@@ -1,6 +1,7 @@
 require 'minitest/autorun'
 require './user'
 require './session'
+require 'digest/sha1'
 
 def authenticate user, pass
   user = User.find_by_name(user)
@@ -37,14 +38,14 @@ describe "Session" do
     session.token.wont_be_nil
   end
   describe "is_expired" do
-      it "should return false if session has not expired" do
-        session = Session.new(user: @user)
-        session.save
-        session.is_expired.must_equal false
-      end
-      it "should return true if session has expired" do
-        session = Session.new(user: @user, created_at: Time.now - Session::EXPIRE_TIMEOUT_SECONDS)
-        session.is_expired.must_equal true
-      end
+    it "should return false if session has not expired" do
+      session = Session.new(user: @user)
+      session.save
+      session.is_expired.must_equal false
+    end
+    it "should return true if session has expired" do
+      session = Session.new(user: @user, created_at: Time.now - Session::EXPIRE_TIMEOUT_SECONDS)
+      session.is_expired.must_equal true
+    end
   end
 end
