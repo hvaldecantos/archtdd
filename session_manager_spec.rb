@@ -9,7 +9,7 @@ describe "SessionManager" do
     before do
       @name = "Carlos"
       @password = "1234"
-      User.new(name: @name, password: @password).save
+      User.create(name: @name, password: @password)
     end
     it "should authenticate a user" do
       SessionManager::authenticate(@name, @password).must_equal true
@@ -32,8 +32,7 @@ describe "SessionManager" do
     end
     it "should return a session with the same user that logged in" do
       SessionManager.stub(:authenticate, true) do
-        user = User.new(name: "nuevo", password: "1234")
-        user.save
+        user = User.create(name: "nuevo", password: "1234")
         session = SessionManager::login("nuevo", "1234")
         session.user.must_equal user
       end

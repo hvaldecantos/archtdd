@@ -6,8 +6,7 @@ describe "Session" do
   before do
     @name = "Carlos"
     @password = "1234"
-    @user = User.new(name: @name, password: @password)
-    @user.save
+    @user = User.create(name: @name, password: @password)
   end
   it "should have a token" do
     session = Session.new(user: @user)
