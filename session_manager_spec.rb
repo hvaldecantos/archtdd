@@ -30,6 +30,14 @@ describe "SessionManager" do
         SessionManager::login(@name, @password).must_be_instance_of Session
       end
     end
+    it "should return a session with the same user that logged in" do
+      SessionManager.stub(:authenticate, true) do
+        user = User.new(name: "nuevo", password: "1234")
+        user.save
+        session = SessionManager::login("nuevo", "1234")
+        session.user.must_equal user
+      end
+    end
   end
 
 end
