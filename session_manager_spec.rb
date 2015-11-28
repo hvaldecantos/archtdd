@@ -38,6 +38,12 @@ describe "SessionManager" do
         session.user.must_equal user
       end
     end
+    it "should save session on db" do
+      SessionManager.stub(:authenticate, true) do
+        session = SessionManager::login(@name, @password)
+        Session.find(session.id).wont_be_nil
+      end
+    end
   end
 
 end
