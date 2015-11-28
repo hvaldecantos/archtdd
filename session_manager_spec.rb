@@ -25,6 +25,11 @@ describe "SessionManager" do
         SessionManager::login(@name, "wrong password").must_equal nil
       end
     end
+    it "should return a session if authentication passes" do
+      SessionManager.stub(:authenticate, true) do
+        SessionManager::login(@name, @password).must_be_instance_of Session
+      end
+    end
   end
 
 end

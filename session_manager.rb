@@ -11,5 +11,6 @@ class SessionManager
 
   def self.login user, pass
     return nil unless self.authenticate(user, pass)
+    return Session.new
   end
 end
