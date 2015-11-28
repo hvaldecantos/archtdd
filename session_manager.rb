@@ -8,4 +8,8 @@ class SessionManager
     return false if user == nil
     user.password == BCrypt::Engine.hash_secret(pass, user.password)
   end
+
+  def self.login user, pass
+    return nil unless self.authenticate(user, pass)
+  end
 end

@@ -20,6 +20,11 @@ describe "SessionManager" do
     it "should not authenticate with a wrong password" do
       SessionManager::authenticate(@name, "wrong").must_equal false
     end
+    it "should return nil if authentication fails" do
+      SessionManager.stub(:authenticate, false) do
+        SessionManager::login(@name, "wrong password").must_equal nil
+      end
+    end
   end
 
 end
