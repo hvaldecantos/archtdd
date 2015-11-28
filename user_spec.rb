@@ -12,13 +12,9 @@ describe User do
     @name = "Fred"
     @user = User.new name: @name, password: @password, password_confirmation: @password
   end
-  it "should be created with matching password confirmation" do
-    a_user = User.new name: "Brooks", password: "same", password_confirmation: "same"
+  it "should be created with a name and a password" do
+    a_user = User.new name: "Brooks", password: "same"
     a_user.wont_be_nil 
-  end
-  it "should raise an exception if created with unmatching password confirmation" do
-    err = ->{ User.new name: "Brooks", password: "same", password_confirmation: "different" }.must_raise PasswordConfirmationException
-    err.message.must_match /Passwords do not match/
   end
   it "has a name" do
     @user.name.must_equal @name
@@ -30,9 +26,5 @@ describe User do
     new_password = "new"
     @user.set_password password: new_password, password_confirmation: new_password
     @user.password.must_equal BCrypt::Engine.hash_secret(new_password, @user.password)
-  end
-  it "should raise an exception when setting a new password with unmatching password confirmation" do
-    err = ->{ @user.set_password password: "same", password_confirmation: "different" }.must_raise PasswordConfirmationException
-    err.message.must_match /Passwords do not match/
   end
 end

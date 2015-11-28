@@ -11,7 +11,7 @@ describe "Authentication" do
   before do
     @name = "Carlos"
     @password = "1234"
-    User.new(name: @name, password: @password, password_confirmation: @password).save
+    User.new(name: @name, password: @password).save
   end
   it "should authenticate a user" do
     authenticate(@name, @password).must_equal true

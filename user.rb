@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
     set_password opt
   end
   def set_password opt = {}
-    raise PasswordConfirmationException.new("Passwords do not match") if opt[:password] != opt[:password_confirmation]
     self.password = Password.create opt[:password], :cost => 1
   end
 end
