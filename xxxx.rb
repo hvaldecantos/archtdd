@@ -32,6 +32,10 @@ describe "Session" do
     @user = User.new(name: @name, password: @password)
     @user.save
   end
+  it "should have a token" do
+    session = Session.new(user: @user)
+    session.token.wont_be_nil
+  end
   describe "is_expired" do
       it "should return false if session has not expired" do
         session = Session.new(user: @user)

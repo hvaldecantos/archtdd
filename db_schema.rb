@@ -15,5 +15,6 @@ ActiveRecord::Schema.define do
     # t.string :token
     t.belongs_to :user, index: true
     t.datetime :created_at
+    t.string :token
   end
 end
