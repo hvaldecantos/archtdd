@@ -11,4 +11,9 @@ ActiveRecord::Schema.define do
     t.string :name
     t.string :password
   end
+  create_table :sessions, force: true do |t|
+    # t.string :token
+    t.belongs_to :user, index: true
+    t.datetime :created_at
+  end
 end
