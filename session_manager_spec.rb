@@ -11,6 +11,10 @@ describe "SessionManager" do
       @password = "1234"
       User.create(name: @name, password: @password)
     end
+    after do
+      User.delete_all
+      Session.delete_all
+    end
     it "should authenticate a user" do
       SessionManager::authenticate(@name, @password).must_equal true
     end
@@ -42,6 +46,11 @@ describe "SessionManager" do
         session = SessionManager::login(@name, @password)
         Session.find(session.id).wont_be_nil
       end
+    end
+    it "should delete session when logging out" do
+      session = SessionManager::login(@name, @password)
+      SessionManager::logout(session.token)
+      Session.find_by_token(session.token).must_be_nil
     end
   end
 

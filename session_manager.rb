@@ -14,4 +14,9 @@ class SessionManager
     user = User.find_by_name(user)
     Session.create user: user
   end
+
+  def self.logout token
+    s = Session.find_by_token(token)
+    s.destroy if s != nil
+  end
 end
