@@ -38,5 +38,9 @@ describe "Session" do
         session.save
         session.is_expired.must_equal false
       end
+      it "should return true if session has expired" do
+        session = Session.new(user: @user, created_at: Time.now - Session::EXPIRE_TIMEOUT_SECONDS)
+        session.is_expired.must_equal true
+      end
   end
 end
