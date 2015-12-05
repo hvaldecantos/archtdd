@@ -33,4 +33,7 @@ describe User do
   it "should have a default role" do
     @user.has_role?("guest").must_equal true
   end
+  it "should check it has a specific role" do
+    @user.has_role?("admin").must_equal false
+  end
 end
