@@ -15,4 +15,7 @@ class User < ActiveRecord::Base
   def set_password opt = {}
     self.password = Password.create opt[:password], :cost => 1
   end
+  def has_role? has_role
+    true
+  end
 end

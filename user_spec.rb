@@ -30,4 +30,7 @@ describe User do
   it "should have a role" do
     @user.role.wont_be_nil
   end
+  it "should have a default role" do
+    @user.has_role?("guest").must_equal true
+  end
 end
