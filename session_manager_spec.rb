@@ -62,7 +62,7 @@ describe "SessionManager" do
     end
     it "should return false when token is expired" do
       session = Session.new()
-      session.stub(:is_expired, true) do
+      session.stub(:is_expired?, true) do
         Session.stub(:find_by_token, session) do
           SessionManager::is_valid_token?(session.token).must_equal false
         end
