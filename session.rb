@@ -9,7 +9,7 @@ class Session < ActiveRecord::Base
     super opt
     self.token = Digest::SHA1.hexdigest Time.now.to_f.to_s
   end
-  def is_expired
+  def is_expired?
     return Time.now - self.created_at > EXPIRE_TIMEOUT_SECONDS
   end
 end
