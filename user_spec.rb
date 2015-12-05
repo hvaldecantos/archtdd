@@ -27,4 +27,7 @@ describe User do
     @user.set_password password: new_password, password_confirmation: new_password
     @user.password.must_equal BCrypt::Engine.hash_secret(new_password, @user.password)
   end
+  it "should have a role" do
+    @user.role.wont_be_nil
+  end
 end

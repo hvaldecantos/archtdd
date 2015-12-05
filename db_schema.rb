@@ -10,6 +10,7 @@ ActiveRecord::Schema.define do
   create_table :users, force: true do |t|
     t.string :name
     t.string :password
+    t.string :role, default: "guest"
   end
   create_table :sessions, force: true do |t|
     # t.string :token
