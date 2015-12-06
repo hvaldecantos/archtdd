@@ -22,6 +22,6 @@ class SessionManager
 
   def self.is_valid_token? token
     s = Session.find_by_token(token)
-    return s != nil && s.token == token
+    return s != nil && !s.is_expired && s.token == token
   end
 end
