@@ -69,4 +69,11 @@ describe "SessionManager" do
       end
     end
   end
+  describe "Authorization" do
+    it "should check user is authorized" do
+      user = User.new(role: "admin")
+      required_role = "admin"
+      SessionManager::is_authorized?(user, required_role).must_equal true
+    end
+  end
 end

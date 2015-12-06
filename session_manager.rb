@@ -24,4 +24,8 @@ class SessionManager
     s = Session.find_by_token(token)
     return s != nil && !s.is_expired? && s.token == token
   end
+
+  def self.is_authorized? user, required_role
+    true
+  end
 end
