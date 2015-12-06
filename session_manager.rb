@@ -26,6 +26,6 @@ class SessionManager
   end
 
   def self.is_authorized? user, required_role
-    true
+    user.has_role?(required_role)
   end
 end

@@ -75,5 +75,10 @@ describe "SessionManager" do
       required_role = "admin"
       SessionManager::is_authorized?(user, required_role).must_equal true
     end
+    it "should check if user is not authorized" do
+      user = User.new()
+      required_role = "admin"
+      SessionManager::is_authorized?(user, required_role).must_equal false
+    end
   end
 end
