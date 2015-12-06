@@ -53,5 +53,9 @@ describe "SessionManager" do
       Session.find_by_token(session.token).must_be_nil
     end
   end
-
+  describe "Token" do
+    it "should return false when token is invalid" do
+      SessionManager::is_valid_token?("dsdfd").must_equal false
+    end
+  end
 end

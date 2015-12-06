@@ -19,4 +19,8 @@ class SessionManager
     s = Session.find_by_token(token)
     s.destroy if s != nil
   end
+
+  def self.is_valid_token? token
+    false
+  end
 end
