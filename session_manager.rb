@@ -21,6 +21,7 @@ class SessionManager
   end
 
   def self.is_valid_token? token
-    false
+    s = Session.find_by_token(token)
+    return s != nil && s.token == token
   end
 end

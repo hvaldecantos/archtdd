@@ -56,5 +56,9 @@ describe "SessionManager" do
     it "should return false when token is invalid" do
       SessionManager::is_valid_token?("dsdfd").must_equal false
     end
+    it "should return true when token is valid" do
+      session = SessionManager::login(@name, @password)
+      SessionManager::is_valid_token?(session.token).must_equal true
+    end
   end
 end
