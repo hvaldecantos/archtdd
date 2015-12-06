@@ -4,17 +4,16 @@ require './session'
 require './session_manager'
 
 describe "SessionManager" do
-
+  before do
+    @name = "Carlos"
+    @password = "1234"
+    User.create(name: @name, password: @password)
+  end
+  after do
+    User.delete_all
+    Session.delete_all
+  end
   describe "Authentication" do
-    before do
-      @name = "Carlos"
-      @password = "1234"
-      User.create(name: @name, password: @password)
-    end
-    after do
-      User.delete_all
-      Session.delete_all
-    end
     it "should authenticate a user" do
       SessionManager::authenticate(@name, @password).must_equal true
     end
