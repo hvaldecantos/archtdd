@@ -5,7 +5,7 @@ require './db_schema'
 
 class User < ActiveRecord::Base
   attr_writer :password_confirmation
-
+  validates :name, uniqueness: { message: "attribute is unique!" }
   include BCrypt
 
   def initialize opt = {}

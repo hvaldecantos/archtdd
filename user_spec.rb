@@ -16,6 +16,14 @@ describe User do
     a_user = User.new name: "Brooks", password: "same"
     a_user.wont_be_nil 
   end
+  it "must raise an exception if name is not unique" do
+    assert_raises ActiveRecord::RecordInvalid do
+      u1 = User.new name: "Unique", password: "same"
+      u2 = User.new name: "Unique", password: "same"
+      u1.save!
+      u2.save!
+    end
+  end
   it "has a name" do
     @user.name.must_equal @name
   end
