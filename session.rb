@@ -3,6 +3,7 @@ require './db_schema'
 
 class Session < ActiveRecord::Base
   belongs_to :user
+  validates :user_id, uniqueness: true
   EXPIRE_TIMEOUT_SECONDS = 60
 
   def initialize opt = {}
