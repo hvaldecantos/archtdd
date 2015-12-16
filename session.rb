@@ -9,6 +9,8 @@ class Session < ActiveRecord::Base
   def initialize opt = {}
     super opt
     self.token = Digest::SHA1.hexdigest Time.now.to_f.to_s
+    s = Session.find_by_user_id(opt[:user])
+    s.destroy if s != nil
   end
   def is_expired?
     return Time.now - self.created_at > EXPIRE_TIMEOUT_SECONDS

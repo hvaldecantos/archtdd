@@ -18,6 +18,12 @@ describe "Session" do
     Session.create(user: a_user)
     Session.where(user: a_user).size.must_equal 1
   end
+  it "should use last created session" do
+    a_user = User.create(name: "some", password: "password")
+    s1 = Session.create(user: a_user)
+    s2 = Session.create(user: a_user)
+    Session.find_by_user_id(a_user).must_equal s2
+  end
   it "should have a token" do
     session = Session.new(user: @user)
     session.token.wont_be_nil
