@@ -2,6 +2,13 @@
 
 Uncovering architecture breakers through the process of Test Driven Development
 
+## Set the environment
+
+1. Install RVM (Ruby Version Manager) https://rvm.io/rvm/install
+2. Go to the root directory and follow RVM instructions if needed
+3. Install blunder gem: ```gem install blunder```
+4. Run ```$ bundle install```to install dependecies
+
 ## Run the cli
 
 ### Help
