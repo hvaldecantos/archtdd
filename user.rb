@@ -1,10 +1,8 @@
 require 'bcrypt'
-require './password_confirmation_exception'
 require 'active_record'
 require './db_schema'
 
 class User < ActiveRecord::Base
-  attr_writer :password_confirmation
   validates :name, uniqueness: { message: "attribute is unique!" }
   validates :name, presence: true
   validates :password, presence: true

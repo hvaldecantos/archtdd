@@ -1,6 +1,5 @@
 require './test_helper'
 require './user'
-# require './password_confirmation_exception'
 require 'bcrypt'
 
 include BCrypt
@@ -10,7 +9,7 @@ describe User do
   before do
     @password = "secret"
     @name = "Fred"
-    @user = User.new name: @name, password: @password, password_confirmation: @password
+    @user = User.new name: @name, password: @password
   end
   it "should be created with a name and a password" do
     a_user = User.new name: "Brooks", password: "same"
@@ -42,7 +41,7 @@ describe User do
   end
   it "can be set a new password" do
     new_password = "new"
-    @user.set_password password: new_password, password_confirmation: new_password
+    @user.set_password password: new_password
     @user.password.must_equal BCrypt::Engine.hash_secret(new_password, @user.password)
   end
   it "should have a role" do
