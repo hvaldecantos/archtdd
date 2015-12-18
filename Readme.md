@@ -30,3 +30,8 @@ $ ruby cli_runner.rb --list-users "{name: 'Fred', token: 'token'}"
 ```
 $ rake test
 ```
+## Run tests coverage
+
+```
+$ rake coverage
+```

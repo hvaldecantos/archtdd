@@ -1,6 +1,6 @@
-require 'minitest/autorun'
+require './test_helper'
 require './user'
-require './password_confirmation_exception'
+# require './password_confirmation_exception'
 require 'bcrypt'
 
 include BCrypt
