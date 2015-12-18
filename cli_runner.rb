@@ -10,7 +10,7 @@ class CLIRunner
   end  
 
   def self.instanciate_cmd_object cmd, symb
-    args = eval(cmd[symb])
+    args = eval(cmd[symb]) if cmd[symb] != nil
 
     if cmd.keys.include? :login
       puts "logging in     ----------------------"

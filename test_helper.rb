@@ -7,3 +7,7 @@ if ENV['COVERAGE']
 end
 
 require 'minitest/autorun'
+require './user'
+require './session'
+require './session_manager'
+require './authorizer'

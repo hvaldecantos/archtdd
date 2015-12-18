@@ -1,6 +1,4 @@
 require './test_helper'
-require './user'
-require './session'
 
 describe "Session" do
   before do

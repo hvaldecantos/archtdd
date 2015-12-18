@@ -1,6 +1,4 @@
 require './test_helper'
-require './user'
-require './authorizer'
 
 describe "Authorization" do
   before(:all) do

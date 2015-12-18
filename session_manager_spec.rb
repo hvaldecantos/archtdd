@@ -1,7 +1,4 @@
 require './test_helper'
-require './user'
-require './session'
-require './session_manager'
 
 describe "SessionManager" do
   before do
